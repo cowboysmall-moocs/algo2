@@ -47,6 +47,7 @@ def main(argv):
     print 'Weighted Completion Time: ', weighted
     print
 
+
 if __name__ == "__main__":
     main(sys.argv[1:])
 

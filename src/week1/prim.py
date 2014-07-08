@@ -29,7 +29,7 @@ def construct_graph(file_path):
 
 
 def handle_node(G, X, s):
-    X.append(s)
+    X.add(s)
     for edge in G[s]:
         heapq.heappush(heap, edge)
 
@@ -37,23 +37,17 @@ def handle_node(G, X, s):
 def main(argv):
     vtotal, etotal, G = construct_graph(argv[0])
 
-    X = []
-    T = []
+    V = set(G.keys())
+    X = set([])
+    T = set([])
 
-    s = random.randint(1, 501)
+    s = random.choice(G.keys())
     handle_node(G, X, s)
 
-    while len(X) != len(G):
+    while X != V:
         edge = heapq.heappop(heap)
-
-        if edge[1] in X and edge[2] in X:
-            continue
-
-        T.append(edge)
-
-        if edge[1] not in X:
-            handle_node(G, X, edge[1])
         if edge[2] not in X:
+            T.add(edge)
             handle_node(G, X, edge[2])
 
     cost = 0
