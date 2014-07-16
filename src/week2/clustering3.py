@@ -5,8 +5,7 @@ from union_find import UnionFind
 
 
 def construct(file_path):
-    vertices = defaultdict(list)
-    indices  = {}
+    vertices = {}
 
     with open(file_path) as file:
         file.readline()
@@ -17,12 +16,10 @@ def construct(file_path):
             number = int(string, 2)
 
             if number not in vertices:
-                vertices[number].extend(generate_hamming_list_integers(string, 2))
-                vertices[number].extend(generate_hamming_list_integers(string, 1))
-                indices[number] = count
+                vertices[number] = count
                 count += 1
 
-    return (vertices, indices)
+    return vertices
 
 
 
@@ -49,13 +46,19 @@ def generate_hamming_list(bit_string, distance):
 
 
 def main(argv):
-    vertices, indices = construct(argv[0])
+    vertices = construct(argv[0])
+
+    hamming  = generate_hamming_list_integers('000000000000000000000000', 2)
+    hamming.extend(generate_hamming_list_integers('000000000000000000000000', 1))
 
     uf = UnionFind(len(vertices))
-    for vertex, candidates in vertices.iteritems():
-        for candidate in candidates:
-            if candidate in indices and not uf.connected(indices[vertex], indices[candidate]):
-                uf.union(indices[vertex], indices[candidate])
+
+    for vertex in vertices:
+        for value in hamming:
+            candidate = vertex ^ value
+            if candidate in vertices:
+                if not uf.connected(vertices[vertex], vertices[candidate]):
+                    uf.union(vertices[vertex], vertices[candidate])
 
     print
     print '%s clusters' % (uf.count())
