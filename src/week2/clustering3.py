@@ -11,11 +11,12 @@ def construct(file_path):
     with open(file_path) as file:
         file.readline()
 
-        count = 0
+        count = 1
         for line in file:
             number = int(''.join(line.strip().split()), 2)
-            vertices[number] = count
-            count += 1
+            if not number in vertices:
+                vertices[number] = count
+                count += 1
 
     return vertices
 
