@@ -29,7 +29,7 @@ def main(argv):
     T     = set([])
 
     max_spacing = 0
-    while uf.count() > k:
+    while uf.count() >= k:
         edge = edges.pop(0)
         if not uf.connected(edge[1], edge[2]):
             uf.union(edge[1], edge[2])
