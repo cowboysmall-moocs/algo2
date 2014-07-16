@@ -28,15 +28,15 @@ def main(argv):
     k     = int(argv[1])
     T     = set([])
 
-    spacing = 0
+    max_spacing = 0
     while uf.count() > k:
         edge = edges.pop(0)
         if not uf.connected(edge[1], edge[2]):
             uf.union(edge[1], edge[2])
-            spacing = edge[0]
+            max_spacing = edge[0]
 
     print
-    print 'For %s clustering: max spacing = %s' % (k, spacing)
+    print 'For %s clustering: max spacing = %s' % (k, max_spacing)
     print
 
 
