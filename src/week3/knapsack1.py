@@ -13,12 +13,11 @@ def construct(file_path):
             item = line.split()
             items.append((int(item[1]), int(item[0])))
 
-    return (W, n, items)
+    return (W, n, sorted(items))
 
 
 def main(argv):
     W, n, items = construct(argv[0])
-    items = sorted(items)
 
     A = [[0 for _ in range(W + 1)] for _ in range(n + 1)]
 
@@ -28,7 +27,6 @@ def main(argv):
                 A[i][x] = max(A[i - 1][x], A[i - 1][x - items[i - 1][0]] + items[i - 1][1])
             else:
                 A[i][x] = A[i - 1][x]
-
 
     print
     print 'Value = ', A[n][W]

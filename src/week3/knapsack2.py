@@ -21,20 +21,18 @@ def construct(file_path):
 def main(argv):
     W, n, items = construct(argv[0])
 
-
     relevant_entries = defaultdict(list)
     relevant_entries[n].append(W)
     for i in range(n - 1, 0, -1):
-        no_dupes     = set(relevant_entries[i + 1] + [w - items[i - 1][0] for w in relevant_entries[i + 1]])
+        intermediate = relevant_entries[i + 1] + [w - items[i - 1][0] for w in relevant_entries[i + 1]]
+        no_dupes     = set(intermediate)
         non_negative = [entry for entry in no_dupes if entry >= 0]
         relevant_entries[i].extend(non_negative)
-
 
     relevant_entries_list = []
     for key, values in relevant_entries.iteritems():
         for value in values:
             relevant_entries_list.append((key, value))
-
 
     A = defaultdict(int)
     for entry in relevant_entries_list:
@@ -47,11 +45,10 @@ def main(argv):
         else:
             A[ entry ] = A[ left_entry ]
 
-
     print
     print '                Dimensions of problem (n x W): ', (W * n)
     print '                    Count of relevant entries: ', len(relevant_entries_list)
-    print 'Percentage of relevant entries to all entries: ', (float(len(relevant_entries_list)) * 100) / (W * n)  
+    print 'Percentage of relevant entries to all entries: ', (float(len(relevant_entries_list)) / (W * n)) * 100
     print '            Count of calculated entries (|A|): ', len(A)
     print '                                    A[(n, W)]: ', A[(n, W)]
     print
