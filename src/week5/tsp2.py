@@ -19,9 +19,9 @@ def construct(file_path):
 
 
 
-def tsp(points):
+def tsp(points, end):
     n = len(points)
-    d = generate_distances(points)
+    d = generate_distances(points + [end])
 
     A = {}
     for i in range(n - 1):
@@ -35,7 +35,7 @@ def tsp(points):
                 B[encode(S, n), j] = min(C)
         A = B
 
-    return min([A[a] + d[a[1]][0] for a in A])
+    return min([A[a] + d[a[1]][n] for a in A])
 
 
 
@@ -89,8 +89,17 @@ def generate_distances(points):
 def main(argv):
     vertices  = construct(argv[0])
 
+    a = vertices[11]
+    b = vertices[12]
+
+    left  = vertices[:11]
+    right = vertices[13:]
+
+    d1 = tsp([a] + left, b)
+    d2 = tsp([b] + right, a)
+
     print 
-    print 'Shortest Distance: ', tsp(vertices)
+    print 'Shortest Distance: ', (d1 + d2)
     print
 
 
