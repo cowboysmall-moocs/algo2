@@ -22,15 +22,6 @@ def main(argv):
     destinations    = list(range(1, count))
     distances       = generate_distances(vertices)
 
-    # first = vertices[0]
-
-    # A = [[0 for _ in range(count - 1)] for _ in range(2 ** (count - 1))]
-
-    # for i in range(count - 1):
-    #     A[i][0] = sys.maxint
-
-
-    # for m in range(2, count)
 
 
 
