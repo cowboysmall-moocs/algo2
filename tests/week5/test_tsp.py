@@ -1,8 +1,6 @@
 import unittest
 
-# from week5.tsp1 import subset_to_bitstring, bitstring_to_subset
-
-from week5.tsp3 import encode, decode, generate_subsets, generate_grouped_subsets
+from week5.tsp1 import encode, decode, generate_subsets, generate_grouped_subsets
 
 
 class TestTSP(unittest.TestCase):
@@ -13,6 +11,13 @@ class TestTSP(unittest.TestCase):
 
         self.assertEqual(encode([1, 3, 5], 24), 42)
         self.assertEqual(decode(42), set([1, 3, 5]))
+
+        self.assertEqual(encode([1, 3, 5], 24), 42)
+        self.assertEqual(decode(42), set([1, 3, 5]))
+
+        self.assertEqual(encode([23], 24), 8388608)
+        self.assertEqual(decode(8388608), set([23]))
+
 
     def test_something(self):
         self.assertEqual(generate_subsets(2, 0), [0])

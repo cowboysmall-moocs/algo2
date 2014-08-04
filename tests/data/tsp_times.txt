@@ -1,0 +1,95 @@
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp.txt 
+
+Shortest Distance:  26442.730309
+
+
+real    108m54.187s
+user    108m45.071s
+sys     0m12.636s
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp2.py tests/data/tsp.txt
+
+Shortest Distance:  26442.730309
+
+
+real    0m0.445s
+user    0m0.439s
+sys     0m0.006s
+
+
+
+
+
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp_test1.txt 
+
+Shortest Distance:  4.0
+
+
+real    0m0.020s
+user    0m0.014s
+sys     0m0.006s
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp_test2.txt 
+
+Shortest Distance:  10.472135955
+
+
+real    0m0.022s
+user    0m0.016s
+sys     0m0.006s
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp_test3.txt 
+
+Shortest Distance:  6.17985881488
+
+
+real    0m0.017s
+user    0m0.012s
+sys     0m0.004s
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp_test4.txt 
+
+Shortest Distance:  6.26533223632
+
+
+real    0m0.026s
+user    0m0.019s
+sys     0m0.007s
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp_test5.txt 
+
+Shortest Distance:  124.965859818
+
+
+real    0m0.021s
+user    0m0.016s
+sys     0m0.006s
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp_test6.txt 
+
+Shortest Distance:  16898.1335223
+
+
+real    0m0.776s
+user    0m0.768s
+sys     0m0.009s
+
+
+[ jerry@gargantua algorithms2 ] $ time python src/week5/tsp1.py tests/data/tsp_test7.txt 
+
+Shortest Distance:  26714.877158
+
+
+real    0m4.291s
+user    0m4.276s
+sys     0m0.018s
+
+[ jerry@gargantua algorithms2 ] $ 
