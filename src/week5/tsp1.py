@@ -24,8 +24,8 @@ def tsp(points):
     d = generate_distances(points)
 
     A = {}
-    for i in range(n - 1):
-        A[encode([0, i + 1], n), i + 1] = d[0][i + 1]
+    for i in range(1, n):
+        A[encode([0, i], n), i] = d[0][i]
 
     for m in range(2, n):
         B = {}
@@ -89,8 +89,10 @@ def generate_distances(points):
 def main(argv):
     vertices  = construct(argv[0])
 
+    d = tsp(vertices)
+
     print 
-    print 'Shortest Distance: ', tsp(vertices)
+    print 'Shortest Distance: ', d
     print
 
 

@@ -89,11 +89,10 @@ def generate_distances(points):
 def main(argv):
     vertices  = construct(argv[0])
 
-    d1 = tsp(vertices[11], vertices[12], vertices[:11])
-    d2 = tsp(vertices[12], vertices[11], vertices[13:])
+    d = tsp(vertices[0], vertices[0], vertices[1:])
 
     print 
-    print 'Shortest Distance: ', (d1 + d2)
+    print 'Shortest Distance: ', d
     print
 
 
