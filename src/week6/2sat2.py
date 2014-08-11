@@ -22,10 +22,10 @@ def construct(file_path):
 def satisfiable(clauses):
     n = len(clauses)
 
-    for i in range(int(math.log(n, 2))):
+    for i in xrange(int(math.log(n, 2))):
 
         assignment = [random.choice([True, False]) for _ in range(n)]
-        for j in range(2 * pow(n, 2)):
+        for j in xrange(2 * pow(n, 2)):
             unsatisfied_clauses = unsatisfied(clauses, assignment)
             if not unsatisfied_clauses:
                 return True
@@ -54,9 +54,15 @@ def preprocess(clauses):
         values_dict[clause[1]].add(clause)
 
     reduced = set()
-    for key, values in values_dict.iteritems():
-        if -key in values_dict:
-            reduced |= values
+    # keys = values_dict.keys()
+    # for key in keys:
+    #     if -key not in values_dict:
+    #         for clause in values_dict[key]:
+    #             if clause[0] == key:
+    #                 for value in values_dict[clause[1]]:
+    #                     if value[0] != key or values[1] != key:
+                            
+
 
     return list(reduced)
 
@@ -64,8 +70,7 @@ def preprocess(clauses):
 def main(argv):
     clauses = construct(argv[0])
 
-    if satisfiable(preprocess(clauses)):
-    # if satisfiable(clauses):
+    if satisfiable(clauses):
         print
         print 'Satisfiable'
         print
