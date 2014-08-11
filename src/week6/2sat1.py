@@ -3,9 +3,11 @@ import sys
 from collections import defaultdict
 
 
+
 stack   = []
 index   = {}
 lowlink = {}
+
 
 def construct(file_path):
     graph = defaultdict(list)
@@ -19,6 +21,7 @@ def construct(file_path):
             graph[-int(item[1])].append(int(item[0]))
 
     return graph
+
 
 
 def scc(v, graph, components, i):
@@ -39,17 +42,14 @@ def scc(v, graph, components, i):
             components[v].append(stack.pop())
 
 
-def tarjan(graph):
+
+def satisfiable(graph):
     components = defaultdict(list)
 
     for v in graph.keys():
         if v not in index:
             scc(v, graph, components, 0)
 
-    return components
-
-
-def satisfiable(components):
     for root in components:
         for v in components[root]:
             if -v in components[root]:
@@ -58,11 +58,11 @@ def satisfiable(components):
     return True
 
 
-def main(argv):
-    graph      = construct(argv[0])
-    components = tarjan(graph)
 
-    if satisfiable(components):
+def main(argv):
+    graph = construct(argv[0])
+
+    if satisfiable(graph):
         print
         print 'Satisfiable'
         print
@@ -70,6 +70,7 @@ def main(argv):
         print
         print 'Unsatisfiable'
         print
+
 
 
 if __name__ == "__main__":
