@@ -62,7 +62,7 @@ def satisfiable(clauses):
                 return True
             else:
                 flip_index = abs(random.choice(random.choice(unsatisfied_clauses)))
-                assignment[flip_index]  = not assignment[flip_index]
+                assignment[flip_index] = not assignment[flip_index]
 
     return False
 
