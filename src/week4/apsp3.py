@@ -36,7 +36,7 @@ def dijkstra_search(edge, vertices, distances, heap):
 def dijkstra(source, v, vertices):
     distances = {}
 
-    for i in range(1, v + 1):
+    for i in xrange(1, v + 1):
         distances[i] = sys.maxint
     distances[source] = 0
 
@@ -58,9 +58,9 @@ def johnson(v, vertices, weights):
 
     shortest = []
 
-    for i in range(1, v + 1):
+    for i in xrange(1, v + 1):
         distances = dijkstra(i, v, v_weighted)
-        for j in range(1, v + 1):
+        for j in xrange(1, v + 1):
             if i != j:
                 shortest.append((distances[j] + weights[i - 1] - weights[j - 1], (j, i)))
 
@@ -68,20 +68,20 @@ def johnson(v, vertices, weights):
 
 
 def bellman_ford(source, v, vertices):
-    A = [[0 for _ in range(v)] for _ in range(v + 1)]
+    A = [[0 for _ in xrange(v)] for _ in xrange(v + 1)]
 
-    for i in range(v):
+    for i in xrange(v):
         if i != source - 1:
             A[0][i] = sys.maxint
 
-    for i in range(1, v + 1):
-        for vertex in range(1, v + 1):
+    for i in xrange(1, v + 1):
+        for vertex in xrange(1, v + 1):
             if vertex in vertices:
                 tails            = vertices[vertex]
                 min_previous     = min([(A[i - 1][tail[0] - 1] + tail[1]) for tail in tails])
                 A[i][vertex - 1] = min(A[i - 1][vertex - 1], min_previous)
 
-    for i in range(v):
+    for i in xrange(v):
         if A[v - 1][i] != A[v][i]:
             return None
 

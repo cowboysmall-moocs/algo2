@@ -19,10 +19,10 @@ def construct(file_path):
 
 
 def knapsack(W, n, items):
-    A = [[0 for _ in range(W + 1)] for _ in range(n + 1)]
+    A = [[0 for _ in xrange(W + 1)] for _ in xrange(n + 1)]
 
-    for i in range(1, n + 1):
-        for x in range(W + 1):
+    for i in xrange(1, n + 1):
+        for x in xrange(W + 1):
             if items[i - 1][0] <= x:
                 A[i][x] = max(A[i - 1][x], A[i - 1][x - items[i - 1][0]] + items[i - 1][1])
             else:

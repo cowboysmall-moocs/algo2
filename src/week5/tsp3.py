@@ -24,12 +24,12 @@ def tsp(start, end, points):
     d = generate_distances([start] + points + [end])
 
     A = {}
-    for i in range(1, n):
+    for i in xrange(1, n):
         A[encode([0, i], n), i] = d[0][i]
 
-    for m in range(2, n):
+    for m in xrange(2, n):
         B = {}
-        for S in [set(subset) | {0} for subset in combinations(range(1, n), m)]:
+        for S in [set(subset) | {0} for subset in combinations(xrange(1, n), m)]:
             for j in S - {0}:
                 C = [A[encode(S - {j}, n), k] + d[k][j] for k in S if k != 0 and k != j]
                 B[encode(S, n), j] = min(C)
@@ -61,7 +61,7 @@ def decode(number):
 def generate_subsets(n, r):
     result = []
 
-    for bits in combinations(range(n), r):
+    for bits in combinations(xrange(n), r):
         result.append(encode(bits, n))
 
     return result
@@ -69,7 +69,7 @@ def generate_subsets(n, r):
 def generate_grouped_subsets(n):
     subsets = {}
 
-    for r in range(n + 1):
+    for r in xrange(n + 1):
         subsets[r] = generate_subsets(n, r)
 
     return subsets

@@ -24,7 +24,7 @@ def construct(file_path):
 
 def generate_distances(bit_count, distance):
     result = []
-    for bits in itertools.combinations(range(bit_count), distance):
+    for bits in itertools.combinations(xrange(bit_count), distance):
         zeros = ['0'] * bit_count
         for bit in bits:
             zeros[bit] = '1'

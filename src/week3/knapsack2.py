@@ -26,7 +26,7 @@ def relevant_entries(W, n, items):
     relevant_entries = defaultdict(list)
     relevant_entries[n].append(W)
 
-    for i in range(n - 1, 0, -1):
+    for i in xrange(n - 1, 0, -1):
         no_dupes     = set(relevant_entries[i + 1] + [w - items[i - 1][0] for w in relevant_entries[i + 1]])
         non_negative = [entry for entry in no_dupes if entry >= 0]
         relevant_entries[i].extend(non_negative)

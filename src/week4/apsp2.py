@@ -19,12 +19,12 @@ def construct(file_path):
 
 
 def floyd_warshall(v, edges):
-    A = [[0 for _ in range(v)] for _ in range(v)]
-    B = [[0 for _ in range(v)] for _ in range(v)]
+    A = [[0 for _ in xrange(v)] for _ in xrange(v)]
+    B = [[0 for _ in xrange(v)] for _ in xrange(v)]
 
 
-    for i in range(v):
-        for j in range(v):
+    for i in xrange(v):
+        for j in xrange(v):
             if i == j:
                 B[i][j] = 0
             elif (i + 1, j + 1) in edges:
@@ -33,16 +33,16 @@ def floyd_warshall(v, edges):
                 B[i][j] = sys.maxint
 
 
-    for k in range(v):
-        for j in range(v):
-            for i in range(v):
+    for k in xrange(v):
+        for j in xrange(v):
+            for i in xrange(v):
                 A[i][j] = min(B[i][j], B[i][k] + B[k][j])
-        for j in range(v):
-            for i in range(v):
+        for j in xrange(v):
+            for i in xrange(v):
                 B[i][j] = A[i][j]
 
 
-    for i in range(v):
+    for i in xrange(v):
         if A[i][i] < 0:
             return None
 
@@ -62,8 +62,8 @@ def main(argv):
         print
     else:
         shortest = []
-        for i in range(v):
-            for j in range(v):
+        for i in xrange(v):
+            for j in xrange(v):
                 if i != j:
                     shortest.append((A[i][j], (i + 1, j + 1)))
         d, p = min(shortest)

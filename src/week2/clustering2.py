@@ -35,8 +35,8 @@ def main(argv):
     vertices = sorted(vertices)
     uf       = UnionFind(vtotal)
 
-    for i in range(vtotal):
-        for j in range(i + 1, vtotal):
+    for i in xrange(vtotal):
+        for j in xrange(i + 1, vtotal):
             if not uf.connected(vertices[i][1], vertices[j][1]):
                 if hamming_distance(vertices[i][0], vertices[j][0]) <= 2:
                     uf.union(vertices[i][1], vertices[j][1])
