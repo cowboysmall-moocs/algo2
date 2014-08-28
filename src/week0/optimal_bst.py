@@ -1,10 +1,19 @@
 import sys
 
 
+def compute_subtree_cost(A, i, j):
+    return A[i][j] if i < len(A) and j < len(A) else 0
+
+
+def minimum_subtree_cost(A, i, j):
+    return min( [ compute_subtree_cost(A, i, r - 1) + compute_subtree_cost(A, r + 1, j) for r in xrange(i, j + 1) ] )
+
+
 def optimal_bst(weights):
     n = len(weights)
-    A = [[0 for _ in xrange(n)] for _ in xrange(n + 1)]
-    S = [[0 for _ in xrange(n)] for _ in xrange(n + 1)]
+
+    A = [[0 for _ in xrange(n)] for _ in xrange(n)]
+    S = [[0 for _ in xrange(n)] for _ in xrange(n)]
 
     for i in xrange(n):
         A[i][i] = weights[i]
@@ -14,13 +23,9 @@ def optimal_bst(weights):
 
     for s in xrange(1, n):
         for i in xrange(n - s):
-            A[i][i + s] = S[i][i + s] + minimum_cost(A, i, i + s)
+            A[i][i + s] = S[i][i + s] + minimum_subtree_cost(A, i, i + s)
 
     return A[0][n - 1]
-
-
-def minimum_cost(A, i, j):
-    return min( [ A[i][r - 1] + A[r + 1][j] for r in xrange(i, j + 1) ] )
 
 
 def main(argv):
