@@ -1,7 +1,6 @@
 import sys
 
 
-
 def construct(file_path):
     edges    = {}
 
@@ -17,10 +16,8 @@ def construct(file_path):
     return (v, edges)
 
 
-
 def floyd_warshall(v, edges):
     A = [[[0 for _ in xrange(v + 1)] for _ in xrange(v)] for _ in xrange(v)]
-
 
     for i in xrange(v):
         for j in xrange(v):
@@ -31,26 +28,21 @@ def floyd_warshall(v, edges):
             else:
                 A[i][j][0] = sys.maxint
 
-
     for k in xrange(v):
         for j in xrange(v):
             for i in xrange(v):
                 A[i][j][k + 1] = min(A[i][j][k], A[i][k][k] + A[k][j][k])
 
-
     for i in xrange(v):
         if A[i][i][v - 1] < 0:
             return None
-
             
     return A
-
 
 
 def main(argv):
     v, e = construct(argv[0])
     A    = floyd_warshall(v, e)
-
 
     if A == None:
         print
@@ -66,7 +58,6 @@ def main(argv):
         print
         print 'Shortest Path [%s, %s] = %s' % (p[0], p[1], d)
         print
-
 
 
 if __name__ == "__main__":

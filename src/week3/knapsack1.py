@@ -1,7 +1,6 @@
 import sys
 
 
-
 def construct(file_path):
     items = []
 
@@ -17,7 +16,6 @@ def construct(file_path):
     return (W, n, sorted(items))
 
 
-
 def knapsack(W, n, items):
     A = [[0 for _ in xrange(W + 1)] for _ in xrange(n + 1)]
 
@@ -31,7 +29,6 @@ def knapsack(W, n, items):
     return A
 
 
-
 def main(argv):
     W, n, items = construct(argv[0])
     A           = knapsack(W, n, items)
@@ -39,7 +36,6 @@ def main(argv):
     print
     print 'Value = ', A[n][W]
     print
-
 
 
 if __name__ == "__main__":

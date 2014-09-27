@@ -30,6 +30,7 @@ def construct_graph(file_path):
 
 def handle_node(G, X, s):
     X.add(s)
+
     for edge in G[s]:
         heapq.heappush(heap, edge)
 

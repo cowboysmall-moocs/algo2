@@ -3,7 +3,6 @@ import sys
 from collections import defaultdict
 
 
-
 stack   = []
 index   = {}
 lowlink = {}
@@ -21,7 +20,6 @@ def construct(file_path):
             graph[-int(item[1])].append(int(item[0]))
 
     return graph
-
 
 
 def scc(v, graph, components, i):
@@ -42,7 +40,6 @@ def scc(v, graph, components, i):
             components[v].append(stack.pop())
 
 
-
 def satisfiable(graph):
     components = defaultdict(list)
 
@@ -58,7 +55,6 @@ def satisfiable(graph):
     return True
 
 
-
 def main(argv):
     graph = construct(argv[0])
 
@@ -70,7 +66,6 @@ def main(argv):
         print
         print 'Unsatisfiable'
         print
-
 
 
 if __name__ == "__main__":

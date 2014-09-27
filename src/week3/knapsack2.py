@@ -3,7 +3,6 @@ import sys
 from collections import defaultdict
 
 
-
 def construct(file_path):
     items = []
 
@@ -17,7 +16,6 @@ def construct(file_path):
             items.append((int(item[1]), int(item[0])))
 
     return (W, n, sorted(items))
-
 
 
 def relevant_entries(W, n, items):
@@ -38,7 +36,6 @@ def relevant_entries(W, n, items):
     return entries
 
 
-
 def knapsack(entries, items):
     A = defaultdict(int)
 
@@ -55,7 +52,6 @@ def knapsack(entries, items):
     return A
 
 
-
 def main(argv):
     W, n, items = construct(argv[0])
     entries     = relevant_entries(W, n, items)
@@ -68,7 +64,6 @@ def main(argv):
     print '            Count of calculated entries (|A|): ', len(A)
     print '                                    A[(n, W)]: ', A[(n, W)]
     print
-
 
 
 if __name__ == "__main__":

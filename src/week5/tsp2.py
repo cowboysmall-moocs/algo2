@@ -4,7 +4,6 @@ from math import sqrt
 from itertools import combinations
 
 
-
 def construct(file_path):
     vertices = []
 
@@ -16,7 +15,6 @@ def construct(file_path):
             vertices.append((float(item[0]), float(item[1])))
 
     return vertices
-
 
 
 def tsp(start, end, points):
@@ -38,7 +36,6 @@ def tsp(start, end, points):
     return min([A[a] + d[a[1]][n] for a in A])
 
 
-
 def encode(subset, n):
     zeros = ['0'] * n
 
@@ -55,7 +52,6 @@ def decode(number):
             subset.append(index)
 
     return set(subset)
-
 
 
 def generate_subsets(n, r):
@@ -75,15 +71,11 @@ def generate_grouped_subsets(n):
     return subsets
 
 
-
 def distance(x, y):
     return sqrt(((x[0] - y[0]) ** 2) + ((x[1] - y[1]) ** 2))
 
 def generate_distances(points):
     return [[distance(x, y) for y in points] for x in points]
-
-
-
 
 
 def main(argv):
@@ -95,8 +87,6 @@ def main(argv):
     print 
     print 'Shortest Distance: ', (d1 + d2)
     print
-
-
 
 
 if __name__ == "__main__":

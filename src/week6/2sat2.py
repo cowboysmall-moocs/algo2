@@ -5,7 +5,6 @@ import random
 from collections import defaultdict
 
 
-
 def construct(file_path):
     clauses = []
 
@@ -19,12 +18,11 @@ def construct(file_path):
     return clauses
 
 
-
 def satisfiable(clauses):
     n = len(clauses)
 
     for _ in xrange(int(math.log(n, 2))):
-        assignment = [random.choice([True, False]) for _ in range(n)]
+        assignment = [random.choice([True, False]) for _ in xrange(n)]
         for _ in xrange(2 * pow(n, 2)):
             unsatisfied_clauses = unsatisfied(clauses, assignment)
             if not unsatisfied_clauses:
@@ -34,7 +32,6 @@ def satisfiable(clauses):
                 assignment[flip_index] = not assignment[flip_index]
 
     return False
-
 
 
 def unsatisfied(clauses, assignment):
@@ -47,10 +44,8 @@ def unsatisfied(clauses, assignment):
     return unsatisfied_clauses
 
 
-
 def unsatisfied_value(value, assignment):
     return (value < 0 and assignment[-value - 1]) or (value > 0 and not assignment[value - 1])
-
 
 
 def main(argv):
@@ -64,7 +59,6 @@ def main(argv):
         print
         print 'Unsatisfiable'
         print
-
 
 
 if __name__ == "__main__":

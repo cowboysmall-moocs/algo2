@@ -6,7 +6,6 @@ from collections import defaultdict
 from itertools import chain
 
 
-
 def construct(file_path):
     clauses = {} 
     values  = defaultdict(list)
@@ -25,7 +24,6 @@ def construct(file_path):
     return clauses, values
 
 
-
 def preprocess(clauses, values):
     candidates = redundant(values.keys())
 
@@ -41,11 +39,9 @@ def preprocess(clauses, values):
     return clauses.keys()
 
 
-
 def redundant(values):
     reduced = set(values)
     return set([value for value in reduced if -value not in reduced])
-
 
 
 def satisfiable(clauses):
@@ -67,7 +63,6 @@ def satisfiable(clauses):
     return False
 
 
-
 def intitial_assignment(clauses):
     assignment = {}
 
@@ -76,7 +71,6 @@ def intitial_assignment(clauses):
         assignment[abs(clause[1])] = random.choice([True, False])
 
     return assignment
-
 
 
 def unsatisfied(clauses, assignment):
@@ -89,10 +83,8 @@ def unsatisfied(clauses, assignment):
     return unsatisfied_clauses
 
 
-
 def unsatisfied_value(value, assignment):
     return (value < 0 and assignment[-value]) or (value > 0 and not assignment[value])
-
 
 
 def main(argv):
@@ -106,7 +98,6 @@ def main(argv):
         print
         print 'Unsatisfiable'
         print
-
 
 
 if __name__ == "__main__":

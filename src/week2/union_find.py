@@ -8,18 +8,14 @@ class UnionFind:
         for i in range(count):
             self.data.append(i + 1)
 
-
     def count(self):
         return self.union_count
-
 
     def connected(self, p, q):
         return self.find(p) == self.find(q)
 
-
     def find(self, p):
         return self.data[p - 1]
-
 
     def union(self, p, q):
         p_parent = self.find(p)
@@ -29,5 +25,3 @@ class UnionFind:
                 if self.data[i] == p_parent:
                     self.data[i] = q_parent
             self.union_count -= 1
-
-

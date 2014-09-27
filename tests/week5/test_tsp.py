@@ -5,7 +5,7 @@ from week5.tsp1 import encode, decode, generate_subsets, generate_grouped_subset
 
 class TestTSP(unittest.TestCase):
 
-    def test_stuff(self):
+    def test_endoce_decode(self):
         self.assertEqual(encode([0], 24), 1)
         self.assertEqual(decode(1), set([0]))
 
@@ -19,7 +19,7 @@ class TestTSP(unittest.TestCase):
         self.assertEqual(decode(8388608), set([23]))
 
 
-    def test_something(self):
+    def test_generate_subsets(self):
         self.assertEqual(generate_subsets(2, 0), [0])
         self.assertEqual(generate_subsets(2, 1), [1, 2])
         self.assertEqual(generate_subsets(2, 2), [3])

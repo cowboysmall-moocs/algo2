@@ -21,7 +21,6 @@ def construct(file_path):
     return vertices
 
 
-
 def generate_distances(bit_count, distance):
     result = []
     for bits in itertools.combinations(xrange(bit_count), distance):
@@ -30,7 +29,6 @@ def generate_distances(bit_count, distance):
             zeros[bit] = '1'
         result.append(int(''.join(zeros), 2))
     return result
-
 
 
 def main(argv):
